@@ -8,10 +8,12 @@ namespace Keepr.Services
   public class VaultsService
   {
     private readonly VaultsRepository _vaultsRepository;
+    private readonly VaultKeepsRepository _vaultKeepsRepository;
 
-    public VaultsService(VaultsRepository VaultsRepository)
+    public VaultsService(VaultsRepository VaultsRepository, VaultKeepsRepository vaultKeepsRepository)
     {
       _vaultsRepository = VaultsRepository;
+      _vaultKeepsRepository = vaultKeepsRepository;
     }
 
     public List<Vault> GetAll()
@@ -41,6 +43,11 @@ namespace Keepr.Services
     public Vault Create(Vault VaultsData)
     {
       return _vaultsRepository.Create(VaultsData);
+    }
+
+    public VaultKeep CreateVaultKeep(VaultKeep data)
+    {
+      return _vaultKeepsRepository.CreateVaultKeep(data);
     }
 
     public Vault Edit(Vault editedVault)

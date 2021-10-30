@@ -88,7 +88,7 @@ namespace Keepr.Repositories
       a.*
       FROM vaults v
       JOIN accounts a ON a.id = v.creatorId
-      WHERE v.creatorId = @profileId;
+      WHERE v.creatorId = @profileId AND IsPrivate = 0;
       ";
       return _db.Query<Vault, Profile, Vault>(sql, (v, a) => {
         v.Creator = a;
