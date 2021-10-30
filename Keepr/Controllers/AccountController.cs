@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Keepr.Models;
 using Keepr.Services;
@@ -9,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Keepr.Controllers
 {
-    [ApiController]
+  [ApiController]
     [Route("[controller]")]
     public class AccountController : ControllerBase
     {

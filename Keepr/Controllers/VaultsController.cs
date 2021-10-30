@@ -30,12 +30,15 @@ namespace Keepr.Controllers
         return BadRequest(e.Message);
       }
     }
-    [HttpGet("{VaultsId}")]
-    public ActionResult<Vault> GetById(int VaultsId)
+    [HttpGet("{vaultId}")]
+    public async Task<ActionResult<Vault>> GetById(int vaultId)
     {
       try
       {
-        return Ok(_vaultsService.GetById(VaultsId));
+        Account userInfo = await HttpContext.GetUserInfoAsync<Account>();
+        // for node reference - req.body.creatorId = req.userInfo.id
+        // FIXME NEVER TRUST THE CLIENT
+        return Ok(_vaultsService.GetById(vaultId, userInfo?.Id));
       }
       catch (System.Exception e)
       {

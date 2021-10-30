@@ -71,13 +71,29 @@ namespace Keepr.Repositories
       a.*
       FROM vaults v
       JOIN accounts a ON a.id = v.creatorId
-      WHERE v.id = @id;
+      WHERE v.id = @Id;
       ";
       return _db.Query<Vault, Profile, Vault>(sql, (v, a) => 
       {
         v.Creator = a;
         return v;
-      }, new {id}).FirstOrDefault();
+      }, new { id }).FirstOrDefault();
+    }
+
+    public List<Vault> GetVaultsByProfile(string profileId)
+    {
+      string sql =@"
+      SELECT
+      v.*,
+      a.*
+      FROM vaults v
+      JOIN accounts a ON a.id = v.creatorId
+      WHERE v.creatorId = @profileId;
+      ";
+      return _db.Query<Vault, Profile, Vault>(sql, (v, a) => {
+        v.Creator = a;
+        return v;
+      }, new { profileId }).ToList();
     }
   }
 }

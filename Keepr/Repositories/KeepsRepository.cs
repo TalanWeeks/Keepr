@@ -79,5 +79,21 @@ namespace Keepr.Repositories
         return k;
       }, new {id}).FirstOrDefault();
     }
+
+    public List<Keep> GetKeepsByProfile(string profileId)
+    {
+      string sql =@"
+      SELECT
+      k.*,
+      a.*
+      FROM keeps k
+      JOIN accounts a ON a.id = k.creatorId
+      WHERE k.creatorId = @profileId;
+      ";
+      return _db.Query<Keep, Profile, Keep>(sql, (k, a) => {
+        k.Creator = a;
+        return k;
+      }, new { profileId }).ToList();
+    }
   }
 }
