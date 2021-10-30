@@ -18,7 +18,8 @@ namespace Keepr.Repositories
       SELECT
       *
       FROM
-      accounts
+      accounts a
+      WHERE a.id = @profileId
       ";
       return _db.Query<Profile>(sql, new { profileId }).FirstOrDefault();
     }
