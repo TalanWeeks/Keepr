@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using Keepr.Models;
 using Keepr.Services;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Keepr.Controllers
@@ -23,7 +22,6 @@ namespace Keepr.Controllers
       _vaultsService = vaultsService;
     }
 
-    [Authorize]
     [HttpGet("{profileId}")]
     public ActionResult<Profile> GetProfileById(string profileId)
     {
@@ -38,9 +36,9 @@ namespace Keepr.Controllers
       }
     }
 
-    [Authorize]
+
     [HttpGet("{profileId}/keeps")]
-    public ActionResult<List<Keep>> GetKeepsByProfile(int profileId)
+    public ActionResult<List<Keep>> GetKeepsByProfile(string profileId)
     {
       try
       {
@@ -53,9 +51,9 @@ namespace Keepr.Controllers
       }
     }
 
-    [Authorize]
+
     [HttpGet("{profileId}/vaults")]
-    public ActionResult<List<Vault>> GetVaultsByProfile(int profileId)
+    public ActionResult<List<Vault>> GetVaultsByProfile(string profileId)
     {
       try
       {
