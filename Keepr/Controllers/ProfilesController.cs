@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using CodeWorks.Auth0Provider;
 using Keepr.Models;
 using Keepr.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -13,26 +11,26 @@ namespace Keepr.Controllers
 
   public class ProfilesController : ControllerBase
   {
-    private readonly AccountService _accountService;
+    private readonly ProfilesService _profilesService;
     private readonly KeepsService _keepsService;
     private readonly VaultsService _vaultsService;
 
 // MIGHT HAVE TO MOVE ALL THIS SHIT INTO ACCOUNT CONTROLLER THE BREAK POINT HITS THERE INSTEAD OF IN HERE...
-    public ProfilesController(AccountService accountService, KeepsService keepsService, VaultsService  vaultsService)
+    public ProfilesController(ProfilesService profilesService, KeepsService keepsService, VaultsService  vaultsService)
     {
-      _accountService = accountService;
+      _profilesService = profilesService;
       _keepsService = keepsService;
       _vaultsService = vaultsService;
     }
 
-    [HttpGet]
     [Authorize]
-    public async Task<ActionResult<Account>> Get()
+    [HttpGet("{profileId}")]
+    public ActionResult<Profile> GetProfileById(string profileId)
     {
       try
       {
-        Account userInfo = await HttpContext.GetUserInfoAsync<Account>();
-        return Ok(_accountService.GetOrCreateProfile(userInfo));
+        Profile profile = _profilesService.GetProfileById(profileId);
+        return Ok(profile);
       }
       catch (System.Exception e)
       {
@@ -42,7 +40,7 @@ namespace Keepr.Controllers
 
     [Authorize]
     [HttpGet("{profileId}/keeps")]
-    public ActionResult<List<Keep>> GetKeepsByProfile(string profileId)
+    public ActionResult<List<Keep>> GetKeepsByProfile(int profileId)
     {
       try
       {
@@ -57,27 +55,11 @@ namespace Keepr.Controllers
 
     [Authorize]
     [HttpGet("{profileId}/vaults")]
-    public ActionResult<List<Vault>> GetVaultsByProfile(string profileId)
+    public ActionResult<List<Vault>> GetVaultsByProfile(int profileId)
     {
       try
       {
         return Ok(_vaultsService.GetVaultsByProfile(profileId));  
-      }
-      catch (System.Exception e)
-      {
-        return BadRequest(e.Message);
-      }
-    }
-
-    [Authorize]
-    [HttpPut]
-
-    public async Task<ActionResult<Account>> Edit([FromBody] Account editedAccount)
-    {
-      try
-      {
-        Account userInfo = await HttpContext.GetUserInfoAsync<Account>();
-        return _accountService.Edit(editedAccount, userInfo.Email);
       }
       catch (System.Exception e)
       {

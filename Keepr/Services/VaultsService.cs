@@ -33,7 +33,7 @@ namespace Keepr.Services
       return foundVault;
     }
 
-    public List<Vault> GetVaultsByProfile(string profileId)
+    public List<Vault> GetVaultsByProfile(int profileId)
     {
       return _vaultsRepository.GetVaultsByProfile(profileId);
     }

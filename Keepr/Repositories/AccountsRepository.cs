@@ -29,9 +29,9 @@ namespace Keepr.Repositories
         {
             string sql = @"
             INSERT INTO accounts
-              (name, picture, email, id)
+              (email, id)
             VALUES
-              (@Name, @Picture, @Email, @Id)";
+              (@Email, @Id)";
             _db.Execute(sql, newAccount);
             return newAccount;
         }

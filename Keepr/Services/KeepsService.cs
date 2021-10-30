@@ -29,7 +29,7 @@ namespace Keepr.Services
       return foundKeep;
     }
 
-    public List<Keep> GetKeepsByProfile(string profileId)
+    public List<Keep> GetKeepsByProfile(int profileId)
     {
       return _keepsRepository.GetKeepsByProfile(profileId);
     }

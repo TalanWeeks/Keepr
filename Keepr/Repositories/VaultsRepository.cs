@@ -80,7 +80,7 @@ namespace Keepr.Repositories
       }, new { id }).FirstOrDefault();
     }
 
-    public List<Vault> GetVaultsByProfile(string profileId)
+    public List<Vault> GetVaultsByProfile(int profileId)
     {
       string sql =@"
       SELECT

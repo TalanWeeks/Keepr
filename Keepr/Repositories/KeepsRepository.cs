@@ -80,12 +80,11 @@ namespace Keepr.Repositories
       }, new {id}).FirstOrDefault();
     }
 
-    public List<Keep> GetKeepsByProfile(string profileId)
+    public List<Keep> GetKeepsByProfile(int profileId)
     {
       string sql =@"
       SELECT
-      k.*,
-      a.*
+      *
       FROM keeps k
       JOIN accounts a ON a.id = k.creatorId
       WHERE k.creatorId = @profileId;
