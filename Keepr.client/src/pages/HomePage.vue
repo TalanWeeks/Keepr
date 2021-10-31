@@ -1,36 +1,43 @@
 <template>
-  <div class="home flex-grow-1 d-flex flex-column align-items-center justify-content-center">
-    <div class="home-card p-5 bg-white rounded elevation-3">
-      <img src="https://bcw.blob.core.windows.net/public/img/8600856373152463" alt="CodeWorks Logo" class="rounded-circle">
-      <h1 class="my-5 bg-dark text-white p-3 rounded text-center">
-        Vue 3 Starter
-      </h1>
+  <div class="container-fluid bg-black">
+    <div class="row">
+      <Keep v-for="k in keeps"
+      :key="k.id"
+      :keep="k"
+      class="p-0 m-0"/>
     </div>
   </div>
 </template>
 
 <script>
+import { computed, watchEffect } from '@vue/runtime-core'
+import { keepsService } from "../services/KeepsService"
+import Pop from "../utils/Pop"
+import { AppState } from '../AppState'
 export default {
-  name: 'Home'
+    name: 'Home',
+  setup() {
+  watchEffect(() => {
+    try {
+      keepsService.get()
+    } catch (error) {
+      Pop.toast(error.message, 'error')
+    }
+  })
+  return {
+      keeps: computed(()=> AppState.keeps)
+    }
+  }
 }
 </script>
 
 <style scoped lang="scss">
-.home{
-  display: grid;
-  height: 80vh;
-  place-content: center;
-  text-align: center;
-  user-select: none;
-  .home-card{
-    width: 50vw;
-    > img{
-      height: 200px;
-      max-width: 200px;
-      width: 100%;
-      object-fit: contain;
-      object-position: center;
-    }
-  }
+.container-fluid{
+  padding: 1rem;
+  column-count: 4;
+}
+img{
+  width: 100%;
+  margin-bottom: 1rem;
 }
 </style>

@@ -4,8 +4,8 @@
       <div class="d-flex flex-column align-items-center">
         <img
           alt="logo"
-          src="../assets/img/cw-logo.png"
-          height="45"
+          src="https://media.istockphoto.com/vectors/letter-logo-in-square-frame-at-ink-dry-brush-strokes-with-rough-edges-vector-id1220066925?k=6&m=1220066925&s=612x612&w=0&h=nvp36igtpCnjIH3xEznIiMMv9u4a6zLbKFCHG1b52Ek="
+          height="67"
         />
       </div>
     </router-link>
@@ -22,11 +22,6 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto">
-        <li>
-          <router-link :to="{ name: 'About' }" class="btn text-success lighten-30 selectable text-uppercase">
-            About
-          </router-link>
-        </li>
       </ul>
       <span class="navbar-text">
         <button
