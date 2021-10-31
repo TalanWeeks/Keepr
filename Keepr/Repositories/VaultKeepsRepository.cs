@@ -59,6 +59,7 @@ namespace Keepr.Repositories
       FROM vault_keeps vk
       JOIN accounts a ON a.id = vk.creatorId
       WHERE vk.VaultId = @vaultId AND CreatorId = @userId;
+      SELECT LAST_INSERT_ID();
       ";
       return _db.Query<VaultKeepViewModel, Profile, VaultKeepViewModel>(sql, (vk, a) => 
       {
