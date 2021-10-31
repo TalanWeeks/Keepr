@@ -14,9 +14,11 @@ namespace Keepr.Controllers
   public class VaultsController : ControllerBase
   {
     private readonly VaultsService _vaultsService;
-    public VaultsController(VaultsService vaultsService)
+    private readonly VaultKeepsService _vaultKeepsService;
+    public VaultsController(VaultsService vaultsService, VaultKeepsService vaultKeepsService)
     {
       _vaultsService = vaultsService;
+      _vaultKeepsService = vaultKeepsService;
     }
     [HttpGet]
     public ActionResult<List<Vault>> GetAll()
@@ -39,6 +41,22 @@ namespace Keepr.Controllers
         // for node reference - req.body.creatorId = req.userInfo.id
         // FIXME NEVER TRUST THE CLIENT
         return Ok(_vaultsService.GetById(vaultId, userInfo?.Id));
+      }
+      catch (System.Exception e)
+      {
+        return BadRequest(e.Message);
+      }
+    }
+
+    [HttpGet("{vaultId}/keeps")]
+    public async Task<ActionResult<List<VaultKeep>>> GetVaultKeepsByVaultId(int vaultId)
+    {
+      try
+      {
+        Account userInfo = await HttpContext.GetUserInfoAsync<Account>();
+        // for node reference - req.body.creatorId = req.userInfo.id
+        // FIXME NEVER TRUST THE CLIENT
+        return Ok(_vaultKeepsService.GetVaultKeepsByVaultId(vaultId, userInfo?.Id));
       }
       catch (System.Exception e)
       {
