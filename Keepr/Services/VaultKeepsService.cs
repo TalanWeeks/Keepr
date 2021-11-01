@@ -16,10 +16,10 @@ namespace Keepr.Services
       _vaultKeepsRepository = vaultKeepsRepository;
     }
 
-    public List<VaultKeepViewModel> GetVaultKeepsByVaultId(int vaultKeepId, string userId)
+    public List<VaultKeepViewModel> GetVaultKeepsByVaultId(int vaultId, string userId)
     {
-      Vault foundVault = _vaultsRepository.Get(vaultKeepId);
-      List<VaultKeepViewModel> vaultKeeps = _vaultKeepsRepository.GetVaultKeepsByVaultId(vaultKeepId, userId);
+      Vault foundVault = _vaultsRepository.Get(vaultId);
+      List<VaultKeepViewModel> vaultKeeps = _vaultKeepsRepository.GetVaultKeepsByVaultId(vaultId, userId);
       if (vaultKeeps == null)
       {
         throw new Exception("Unable to find VaultKeeps with that Id");

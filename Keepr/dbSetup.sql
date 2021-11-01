@@ -6,3 +6,13 @@ CREATE TABLE IF NOT EXISTS accounts(
   email varchar(255) COMMENT 'User Email',
   picture varchar(255) COMMENT 'User Picture'
 ) default charset utf8 COMMENT '';
+
+
+      SELECT
+      vk.id AS vaultKeepId,
+      k.*,
+      a.*
+      FROM vault_keeps vk
+      JOIN keeps k ON k.id = vk.keepId
+      JOIN accounts a ON a.id = vk.creatorId
+      WHERE vk.vaultId = 622;
