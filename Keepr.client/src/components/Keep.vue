@@ -1,14 +1,15 @@
 <template>
-  <div class="d-flex justify-content-center bg-black">
-    
+  <div class=" bg-black">    
     <div class="card m-4  shadow rounded " style="width: 18rem">
       <img :src="keep.img" 
           class="card-img-top selectable"
           data-bs-toggle="modal"
           :data-bs-target="'#keep-modal-' + keep.id"/>
-      <div class="card-body">
+      <div class="">
         <h5>{{keep.name}}</h5>
-        <img :src="keep.creator.picture" class="circle-rounded" style="width: 3rem;">
+        <router-link :to="{name: 'Profile', params: {id: keep.creatorId}}" class="selectable">
+          <img :src="keep.creator.picture" class="circle-rounded" style="width: 3rem;">
+        </router-link>        
       </div>      
     </div>
   </div>

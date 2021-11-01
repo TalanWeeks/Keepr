@@ -10,9 +10,15 @@ class KeepsService{
     logger.log('your keeps sir',AppState.keeps)
   }
 
-  async getKeepsById(id){
-    const res = await api.getKeepsByProfile(`api/keeps/${id}`)
+  async getKeepById(id){
+    const res = await api.getKeepById(`api/keeps/${id}`)
     logger.log("this is a single keep by its Id mi lord", res.data)
+  }
+  async getKeepsByProfileId(profileId){
+    AppState.usersKeeps = []
+    const res = await api.get(`api/profiles/${profileId}/keeps`)
+    logger.log("this is all the keeps on this profile", res.data)
+    AppState.usersKeeps = res.data.map(k => new Keep(k))
   }
 }
 export const keepsService = new KeepsService()

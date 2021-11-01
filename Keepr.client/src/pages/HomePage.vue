@@ -33,11 +33,11 @@ export default {
 
 <style scoped lang="scss">
 .container-fluid{
-  padding: 1rem;
+  padding: 2rem;
   column-count: 4;
 }
 img{
   width: 100%;
-  margin-bottom: 1rem;
+  margin: 1rem;
 }
 </style>
