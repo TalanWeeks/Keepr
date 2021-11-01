@@ -8,7 +8,7 @@
         <h5 class="align-self-baseline action" title="details" data-bs-toggle="modal"
           :data-bs-target="'#keep-modal-' + keep.id">{{keep.name}}</h5>
         <router-link :to="{name: 'Profile', params: {id: keep.creatorId}}" class="action align-self-baseline" title="profile page">
-          <img :src="keep.creator.picture" class="circle" style="width: 3rem;">
+          <img :src="keep.creator.picture" class="rounded-circle" style="width: 2.5rem;">
         </router-link>        
     </div>      
     </div>

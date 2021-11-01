@@ -4,8 +4,10 @@
       <div class="col-md-1">
         <img :src="profile.picture" alt="">
       </div>
-      <div class="col-md-8 text-light text-start">
+      <div class="col-md-8 ms-3 mt-3 text-light text-start">
         <h3>{{profile.name}}</h3>
+        <h5>Keeps: <span>{{usersKeeps.length}}</span></h5>
+        <h5>Vaults: <span>{{usersVaults.length}}</span></h5>
       </div>
     </div>
     <div class="row text-light mt-5">
