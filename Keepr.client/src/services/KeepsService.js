@@ -22,13 +22,16 @@ class KeepsService{
   }
   async getKeepByVaultId(vaultId){
     const res = await api.get(`api/vaults/${vaultId}/keeps`)
-    logger.log("this is your keeps in this your keeps in this vault", res.data)
+    logger.log("this is your keeps in this vault", res.data)
+    AppState.vaultKeeps = res.data.map(k => new Keep(k))
   }
   async getKeepsByProfileId(profileId){
     AppState.usersKeeps = []
     const res = await api.get(`api/profiles/${profileId}/keeps`)
     logger.log("this is all the keeps on this profile", res.data)
     AppState.usersKeeps = res.data.map(k => new Keep(k))
+    logger.log("this is all the keeps on this profile", AppState.usersKeeps)
+
   }
 
   async editKeep(keepData){

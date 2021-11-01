@@ -6,10 +6,10 @@
           data-bs-toggle="modal"
           :data-bs-target="'#vault-modal-' + vault.id"/> -->
       <div class="">
+      <router-link :to="{name: 'Vault', params: {vaultId: vault.id}}" class="action" title="vault page">
         <h5>{{vault.name}}</h5>
-        <router-link :to="{name: 'Vault', params: {id: vault.id}}" class="action" title="vault page">
-          <img :src="vault.creator.picture" class="rounded-circle" style="width: 2.5rem;">
-        </router-link>        
+      </router-link>   
+          <img :src="vault.creator.picture" class="rounded-circle" style="width: 2.5rem;">     
       </div>      
     </div>
   </div>

@@ -27,7 +27,6 @@ namespace Keepr.Repositories
       data.Id = id;
       return data;
     }
-
     public void Delete(int id)
     {
       string sql = @"

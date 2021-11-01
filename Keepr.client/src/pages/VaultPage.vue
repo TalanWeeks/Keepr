@@ -1,12 +1,12 @@
 <template>
   <div class="container-fluid bg-black">
     <h1>heelllerrrr from vault page</h1>
-    <!-- <div class="row">
-      <Keep v-for="k in keeps"
-      :key="k.id"
-      :keep="k"
+    <div class="row">
+      <Keep v-for="vk in vaultKeeps"
+      :key="vk.id"
+      :keep="vk"
       class="p-0 m-0"/>
-    </div> -->
+    </div>
   </div>
 </template>
 
@@ -17,7 +17,6 @@ import Pop from "../utils/Pop"
 import { AppState } from '../AppState'
 import { useRoute } from 'vue-router'
 export default {
-    name: 'Home',
   setup() {
     const route = useRoute()
   onMounted(() => {
@@ -28,7 +27,7 @@ export default {
     }
   })
   return {
-      keeps: computed(()=> AppState.keeps)
+      vaultKeeps: computed(()=> AppState.vaultKeeps)
     }
   }
 }

@@ -22,7 +22,7 @@ const routes = [
     component: loadPage('ProfilePage')
   },
   {
-    path: '/vault/:id',
+    path: '/vault/:vaultId',
     name: 'Vault',
     component: loadPage('VaultPage')
   },
