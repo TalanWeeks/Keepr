@@ -3,11 +3,11 @@
     <div class="card m-4 shadow rounded " style="width: 18rem">
       <img :src="keep.img" 
           class="card-img"
-          data-bs-toggle="modal"
-          :data-bs-target="'#keep-modal-' + keep.id"/>
+          />
       <div class="card-img-overlay text-light">
-        <h5 class="align-self-baseline">{{keep.name}}</h5>
-        <router-link :to="{name: 'Profile', params: {id: keep.creatorId}}" class="selectable align-self-baseline">
+        <h5 class="align-self-baseline action" title="details" data-bs-toggle="modal"
+          :data-bs-target="'#keep-modal-' + keep.id">{{keep.name}}</h5>
+        <router-link :to="{name: 'Profile', params: {id: keep.creatorId}}" class="action align-self-baseline" title="profile page">
           <img :src="keep.creator.picture" class="circle" style="width: 3rem;">
         </router-link>        
     </div>      

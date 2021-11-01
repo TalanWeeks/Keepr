@@ -7,7 +7,7 @@
           :data-bs-target="'#vault-modal-' + vault.id"/> -->
       <div class="">
         <h5>{{vault.name}}</h5>
-        <router-link :to="{name: 'Profile', params: {id: vault.creatorId}}" class="selectable">
+        <router-link :to="{name: 'Profile', params: {id: vault.creatorId}}" class="action" title="vault page">
           <img :src="vault.creator.picture" class="circle-rounded" style="width: 3rem;">
         </router-link>        
       </div>      

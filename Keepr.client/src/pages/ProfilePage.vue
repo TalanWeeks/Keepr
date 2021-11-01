@@ -9,7 +9,8 @@
       </div>
     </div>
     <div class="row text-light mt-5">
-      <h3>Vaults</h3>
+      <h3>Vaults <span class="mdi mdi-plus action" title="create keep" data-bs-toggle="modal"
+          data-bs-target="#create-vault"></span></h3>
     </div>
 
     <div class="row">
@@ -20,7 +21,8 @@
     </div>
 
     <div class="row text-light mt-5">
-      <h3>Keeps</h3>
+      <h3>Keeps <span class="mdi mdi-plus action" title="create keep" data-bs-toggle="modal"
+          data-bs-target="#create-keep"></span></h3>
     </div>
     <div class="container-fluid masonry-bullish">
     <div class="row">
@@ -31,6 +33,22 @@
     </div>
   </div>
   </div>
+  <Modal id="create-vault" class="bg-dark text-light">
+    <template #modal-title>
+      <h5>Create Vault</h5>      
+    </template>
+    <template #modal-body>
+      <VaultForm class="m-1 container-fluid" />
+    </template>
+  </Modal>
+  <Modal id="create-keep" class="bg-dark text-light">
+    <template #modal-title>
+      <h5>Create Keept</h5>      
+    </template>
+    <template #modal-body>
+      <KeepForm class="m-1 container-fluid" />
+    </template>
+  </Modal>
 </template>
 
 <script>
