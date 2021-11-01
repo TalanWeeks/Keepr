@@ -8,14 +8,18 @@
         <h3>{{profile.name}}</h3>
       </div>
     </div>
-
+    <div class="row text-light mt-5">
+      <h3>Vaults</h3>
+    </div>
     <div class="row">
-      <Keep v-for="k in usersVaults"
-      :key="k.id"
-      :keep="k"
+      <Vault v-for="v in usersVaults"
+      :key="v.id"
+      :vault="v"
       class="col-md-4 p-0 m-0"/>
     </div>
-    
+    <div class="row text-light mt-5">
+      <h3>Keeps</h3>
+    </div>
     <div class="row">
       <Keep v-for="k in usersKeeps"
       :key="k.id"
@@ -60,6 +64,7 @@ export default {
   })
   return {
      usersKeeps: computed(()=> AppState.usersKeeps),
+     usersVaults: computed(()=> AppState.usersVaults),
      profile: computed(() => AppState.profile)
     }
   }
