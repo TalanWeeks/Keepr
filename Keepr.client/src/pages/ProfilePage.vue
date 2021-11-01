@@ -54,7 +54,7 @@
 </template>
 
 <script>
-import { computed, watchEffect } from '@vue/runtime-core'
+import { computed, onMounted, watchEffect } from '@vue/runtime-core'
 import { keepsService } from "../services/KeepsService"
 import { vaultsService } from "../services/VaultsService"
 import { profilesService } from "../services/ProfilesService"
@@ -79,7 +79,7 @@ export default {
         Pop.toast(error, 'error')
       }
     }
-  watchEffect(async () => {
+  onMounted(async () => {
     if(route.params.id){
       await profilesService.getProfileById(route.params.id)
       getKeepsByProfileId()

@@ -10,14 +10,14 @@
 </template>
 
 <script>
-import { computed, watchEffect } from '@vue/runtime-core'
+import { computed, onMounted, watchEffect } from '@vue/runtime-core'
 import { keepsService } from "../services/KeepsService"
 import Pop from "../utils/Pop"
 import { AppState } from '../AppState'
 export default {
     name: 'Home',
   setup() {
-  watchEffect(() => {
+ onMounted(() => {
     try {
       keepsService.get()
     } catch (error) {

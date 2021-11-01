@@ -20,6 +20,10 @@ class KeepsService{
     const res = await api.getKeepById(`api/keeps/${id}`)
     logger.log("this is a single keep by its Id mi lord", res.data)
   }
+  async getKeepByVaultId(vaultId){
+    const res = await api.get(`api/vaults/${vaultId}/keeps`)
+    logger.log("this is your keeps in this your keeps in this vault", res.data)
+  }
   async getKeepsByProfileId(profileId){
     AppState.usersKeeps = []
     const res = await api.get(`api/profiles/${profileId}/keeps`)

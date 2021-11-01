@@ -11,16 +11,18 @@
 </template>
 
 <script>
-import { computed, watchEffect } from '@vue/runtime-core'
+import { computed, onMounted, watchEffect } from '@vue/runtime-core'
 import { keepsService } from "../services/KeepsService"
 import Pop from "../utils/Pop"
 import { AppState } from '../AppState'
+import { useRoute } from 'vue-router'
 export default {
     name: 'Home',
   setup() {
-  watchEffect(() => {
+    const route = useRoute()
+  onMounted(() => {
     try {
-      keepsService.get()
+      keepsService.getKeepByVaultId(route.params.id)
     } catch (error) {
       Pop.toast(error.message, 'error')
     }
