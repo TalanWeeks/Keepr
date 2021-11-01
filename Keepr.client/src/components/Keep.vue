@@ -1,16 +1,16 @@
 <template>
-  <div class=" bg-black">    
-    <div class="card m-4  shadow rounded " style="width: 18rem">
+  <div class="d-flex bg-black">    
+    <div class="card m-4 shadow rounded " style="width: 18rem">
       <img :src="keep.img" 
-          class="card-img-top selectable"
+          class="card-img"
           data-bs-toggle="modal"
           :data-bs-target="'#keep-modal-' + keep.id"/>
-      <div class="">
-        <h5>{{keep.name}}</h5>
-        <router-link :to="{name: 'Profile', params: {id: keep.creatorId}}" class="selectable">
-          <img :src="keep.creator.picture" class="circle-rounded" style="width: 3rem;">
+      <div class="card-img-overlay text-light">
+        <h5 class="align-self-baseline">{{keep.name}}</h5>
+        <router-link :to="{name: 'Profile', params: {id: keep.creatorId}}" class="selectable align-self-baseline">
+          <img :src="keep.creator.picture" class="circle" style="width: 3rem;">
         </router-link>        
-      </div>      
+    </div>      
     </div>
   </div>
 

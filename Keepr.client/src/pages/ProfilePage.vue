@@ -11,21 +11,25 @@
     <div class="row text-light mt-5">
       <h3>Vaults</h3>
     </div>
+
     <div class="row">
       <Vault v-for="v in usersVaults"
       :key="v.id"
       :vault="v"
-      class="col-md-4 p-0 m-0"/>
+      class="p-0 m-0"/>
     </div>
+
     <div class="row text-light mt-5">
       <h3>Keeps</h3>
     </div>
+    <div class="container-fluid masonry-bullish">
     <div class="row">
       <Keep v-for="k in usersKeeps"
       :key="k.id"
       :keep="k"
-      class="col-md-4 p-0 m-0"/>
+      class="p-0 m-0"/>
     </div>
+  </div>
   </div>
 </template>
 
@@ -72,5 +76,12 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
+.masonry-bullish{
+  padding: 2rem;
+  column-count: 4;
+}
+img{
+  width: 100%;
+  margin: 1rem;
+}
 </style>
