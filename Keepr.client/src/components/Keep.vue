@@ -34,6 +34,7 @@ import { Keep } from '../Models/Keep'
 import { AppState } from '../AppState'
 import Pop from '../utils/Pop'
 import { keepsService } from '../services/KeepsService'
+import { vaultsService } from '../services/VaultsService'
 export default {
   props: {
     keep: {

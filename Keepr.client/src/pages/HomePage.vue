@@ -14,6 +14,7 @@ import { computed, onMounted, watchEffect } from '@vue/runtime-core'
 import { keepsService } from "../services/KeepsService"
 import Pop from "../utils/Pop"
 import { AppState } from '../AppState'
+
 export default {
     name: 'Home',
   setup() {
@@ -25,7 +26,9 @@ export default {
     }
   })
   return {
-      keeps: computed(()=> AppState.keeps)
+      keeps: computed(()=> AppState.keeps),
+      vaults: computed(() => AppState.usersVaults),
+      account: computed(() => AppState.account)
     }
   }
 }
