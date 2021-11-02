@@ -42,6 +42,7 @@ class KeepsService{
   async delete(id) {
     const res = await api.delete(`api/keeps/${id}`)
     logger.log('delete res', res)
+    AppState.usersKeeps = AppState.usersKeeps.filter(k => k.id !== id)
     AppState.keeps = AppState.keeps.filter(k => k.id !== id)
   }
 }
