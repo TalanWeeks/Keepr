@@ -12,7 +12,7 @@
     </div>
     <div class="row text-light mt-5">
       <h3>Vaults <span class="mdi mdi-plus action" title="create keep" data-bs-toggle="modal"
-          data-bs-target="#create-vault"></span></h3>
+          data-bs-target="#create-vault" v-if="profile.id === account.id"></span></h3>
     </div>
 
     <div class="row">
@@ -24,7 +24,7 @@
 
     <div class="row text-light mt-5">
       <h3>Keeps <span class="mdi mdi-plus action" title="create keep" data-bs-toggle="modal"
-          data-bs-target="#create-keep"></span></h3>
+          data-bs-target="#create-keep" v-if="profile.id === account.id"></span></h3>
     </div>
     <div class="container-fluid masonry-bullish">
     <div class="row">
@@ -89,7 +89,8 @@ export default {
   return {
      usersKeeps: computed(()=> AppState.usersKeeps),
      usersVaults: computed(()=> AppState.usersVaults),
-     profile: computed(() => AppState.profile)
+     profile: computed(() => AppState.profile),
+     account: computed(() => AppState.account)
     }
   }
 }
