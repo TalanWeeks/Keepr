@@ -19,9 +19,11 @@ import { useRoute } from 'vue-router'
 export default {
   setup() {
     const route = useRoute()
-  onMounted(() => {
+  watchEffect(async () => {
     try {
-      keepsService.getKeepByVaultId(route.params.id)
+      if(route.params.vaultId){
+      await keepsService.getKeepByVaultId(route.params.vaultId)
+      }
     } catch (error) {
       Pop.toast(error.message, 'error')
     }
