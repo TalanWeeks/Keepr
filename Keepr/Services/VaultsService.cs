@@ -21,16 +21,36 @@ namespace Keepr.Services
       return _vaultsRepository.Get();
     }
 
-    public Vault GetById(int vaultId, string userId)
+    public Vault CanYouPostInThisVault(int vaultId, string userId)
     {
-      Vault foundVault = _vaultsRepository.Get(vaultId);
-      if (foundVault == null)
+        Vault foundVault = _vaultsRepository.Get(vaultId);
+        if (foundVault == null)
       {
         throw new Exception("Unable to find Vault with that Id");
       }
-      if (foundVault.IsPrivate == true && foundVault.CreatorId != userId)
+        if (foundVault.CreatorId != userId){
+        throw new Exception("not your vault");
+      }
+      return foundVault;
+    }
+
+    public Vault GetById(int vaultId, string userId)
+    {
+      Vault foundVault = _vaultsRepository.Get(vaultId);
+        if (foundVault == null)
       {
         throw new Exception("Unable to find Vault with that Id");
+      }
+        if (foundVault.IsPrivate == false && foundVault.CreatorId != userId)
+      {
+        return foundVault;
+      }
+        if (foundVault.IsPrivate == true && foundVault.CreatorId != userId)
+      {
+        throw new Exception("Unable to find Vault with that Id");
+      }
+        if (foundVault.CreatorId != userId){
+        throw new Exception("not your vault");
       }
       return foundVault;
     }
@@ -49,6 +69,9 @@ namespace Keepr.Services
 
     public VaultKeep CreateVaultKeep(VaultKeep data)
     {
+      int vaultId = data.VaultId;
+      string userId = data.CreatorId;
+      CanYouPostInThisVault(vaultId, userId);
       return _vaultKeepsRepository.CreateVaultKeep(data);
     }
 
