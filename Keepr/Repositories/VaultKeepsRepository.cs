@@ -35,7 +35,7 @@ namespace Keepr.Repositories
       DELETE FROM vault_keeps WHERE id = @id LIMIT 1;
       ";
       var rowsAffected = _db.Execute(sql, new { id });
-      if(rowsAffected == 0)
+      if (rowsAffected == 0)
       {
         throw new System.Exception("VaultKeep delorte failed bud");
       }
@@ -63,7 +63,7 @@ namespace Keepr.Repositories
       JOIN accounts a ON a.id = vk.creatorId
       WHERE vk.vaultId = @vaultId;
       ";
-      return _db.Query<VaultKeepViewModel, Profile, VaultKeepViewModel>(sql, (vk, a) => 
+      return _db.Query<VaultKeepViewModel, Profile, VaultKeepViewModel>(sql, (vk, a) =>
       {
         vk.Creator = a;
         return vk;
@@ -80,7 +80,7 @@ namespace Keepr.Repositories
       JOIN accounts a ON a.id = vk.creatorId
       WHERE vk.id = @Id;
       ";
-      return _db.Query<VaultKeep, Profile, VaultKeep>(sql, (vk, a) => 
+      return _db.Query<VaultKeep, Profile, VaultKeep>(sql, (vk, a) =>
       {
         vk.Creator = a;
         return vk;

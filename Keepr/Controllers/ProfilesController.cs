@@ -16,8 +16,8 @@ namespace Keepr.Controllers
     private readonly KeepsService _keepsService;
     private readonly VaultsService _vaultsService;
 
-// MIGHT HAVE TO MOVE ALL THIS SHIT INTO ACCOUNT CONTROLLER THE BREAK POINT HITS THERE INSTEAD OF IN HERE...
-    public ProfilesController(ProfilesService profilesService, KeepsService keepsService, VaultsService  vaultsService)
+    // MIGHT HAVE TO MOVE ALL THIS SHIT INTO ACCOUNT CONTROLLER THE BREAK POINT HITS THERE INSTEAD OF IN HERE...
+    public ProfilesController(ProfilesService profilesService, KeepsService keepsService, VaultsService vaultsService)
     {
       _profilesService = profilesService;
       _keepsService = keepsService;
@@ -45,7 +45,7 @@ namespace Keepr.Controllers
       try
       {
         List<Keep> keeps = _keepsService.GetKeepsByProfile(profileId);
-        return Ok(keeps);  
+        return Ok(keeps);
       }
       catch (System.Exception e)
       {
@@ -58,8 +58,9 @@ namespace Keepr.Controllers
     public async Task<ActionResult<List<Vault>>> GetVaultsByProfile(string profileId)
     {
       try
-      { Account userInfo = await HttpContext.GetUserInfoAsync<Account>();
-        return Ok(_vaultsService.GetVaultsByProfile(profileId, userInfo?.Id));  
+      {
+        Account userInfo = await HttpContext.GetUserInfoAsync<Account>();
+        return Ok(_vaultsService.GetVaultsByProfile(profileId, userInfo?.Id));
       }
       catch (System.Exception e)
       {

@@ -33,7 +33,7 @@ namespace Keepr.Repositories
       DELETE FROM vaults WHERE id = @id LIMIT 1;
       ";
       var rowsAffected = _db.Execute(sql, new { id });
-      if(rowsAffected == 0)
+      if (rowsAffected == 0)
       {
         throw new System.Exception("Vault delorte failed bud");
       }
@@ -50,10 +50,10 @@ namespace Keepr.Repositories
       WHERE id = @Id LIMIT 1;
       ";
       var rowsAffected = _db.Execute(sql, data);
-        if(rowsAffected == 0)
-        {
-          throw new System.Exception("vault edito failed bud");
-        }
+      if (rowsAffected == 0)
+      {
+        throw new System.Exception("vault edito failed bud");
+      }
       return data;
     }
     public List<Vault> Get()
@@ -72,7 +72,7 @@ namespace Keepr.Repositories
       JOIN accounts a ON a.id = v.creatorId
       WHERE v.id = @Id;
       ";
-      return _db.Query<Vault, Profile, Vault>(sql, (v, a) => 
+      return _db.Query<Vault, Profile, Vault>(sql, (v, a) =>
       {
         v.Creator = a;
         return v;
@@ -81,7 +81,7 @@ namespace Keepr.Repositories
 
     public List<Vault> GetVaultsByProfile(string profileId)
     {
-      string sql =@"
+      string sql = @"
       SELECT
       v.*,
       a.*
@@ -89,14 +89,15 @@ namespace Keepr.Repositories
       JOIN accounts a ON a.id = v.creatorId
       WHERE v.creatorId = @profileId;
       ";
-      return _db.Query<Vault, Profile, Vault>(sql, (v, a) => {
+      return _db.Query<Vault, Profile, Vault>(sql, (v, a) =>
+      {
         v.Creator = a;
         return v;
       }, new { profileId }).ToList();
     }
     public List<Vault> GetOtherUsersVaults(string profileId)
     {
-      string sql =@"
+      string sql = @"
       SELECT
       v.*,
       a.*
@@ -104,7 +105,8 @@ namespace Keepr.Repositories
       JOIN accounts a ON a.id = v.creatorId
       WHERE v.creatorId = @profileId AND IsPrivate = 0;
       ";
-      return _db.Query<Vault, Profile, Vault>(sql, (v, a) => {
+      return _db.Query<Vault, Profile, Vault>(sql, (v, a) =>
+      {
         v.Creator = a;
         return v;
       }, new { profileId }).ToList();

@@ -31,7 +31,7 @@ namespace Keepr.Services
       return vaultKeeps;
     }
 
-    
+
     public VaultKeep GetById(int vaultKeepId, string userId)
     {
       VaultKeep foundVault = _vaultKeepsRepository.GetById(vaultKeepId);

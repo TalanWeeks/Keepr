@@ -34,7 +34,7 @@ namespace Keepr.Repositories
       DELETE FROM keeps  WHERE id = @id LIMIT 1;
       ";
       var rowsAffected = _db.Execute(sql, new { id });
-      if(rowsAffected == 0)
+      if (rowsAffected == 0)
       {
         throw new System.Exception("Keep delorte failed bud");
       }
@@ -51,10 +51,10 @@ namespace Keepr.Repositories
       WHERE id = @Id LIMIT 1;
       ";
       var rowsAffected = _db.Execute(sql, data);
-        if(rowsAffected == 0)
-        {
-          throw new System.Exception("Keep delorte failed bud");
-        }
+      if (rowsAffected == 0)
+      {
+        throw new System.Exception("Keep delorte failed bud");
+      }
       return data;
     }
     public List<Keep> Get()
@@ -65,9 +65,10 @@ namespace Keepr.Repositories
       a.*
       FROM keeps k
       JOIN accounts a on a.id = k.creatorId";
-      return _db.Query<Keep, Profile, Keep>(sql, (k,a) => {
-      k.Creator = a;
-      return k;
+      return _db.Query<Keep, Profile, Keep>(sql, (k, a) =>
+      {
+        k.Creator = a;
+        return k;
       }).ToList();
     }
 
@@ -81,23 +82,24 @@ namespace Keepr.Repositories
       JOIN accounts a ON a.id = k.creatorId
       WHERE k.id = @id;
       ";
-      return _db.Query<Keep, Profile, Keep>(sql, (k, a) => 
+      return _db.Query<Keep, Profile, Keep>(sql, (k, a) =>
       {
         k.Creator = a;
         return k;
-      }, new {id}).FirstOrDefault();
+      }, new { id }).FirstOrDefault();
     }
 
     public List<Keep> GetKeepsByProfile(string profileId)
     {
-      string sql =@"
+      string sql = @"
       SELECT
       *
       FROM keeps k
       JOIN accounts a ON a.id = k.creatorId
       WHERE k.creatorId = @profileId;
       ";
-      return _db.Query<Keep, Profile, Keep>(sql, (k, a) => {
+      return _db.Query<Keep, Profile, Keep>(sql, (k, a) =>
+      {
         k.Creator = a;
         return k;
       }, new { profileId }).ToList();
