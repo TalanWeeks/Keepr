@@ -1,17 +1,19 @@
 <template>
   <div class=" bg-black col-md-3">    
-    <div class="card m-4  shadow rounded " style="width: 18rem">
-      <!-- <img :src="vault.img" 
-          class="card-img-top selectable"
-          data-bs-toggle="modal"
-          :data-bs-target="'#vault-modal-' + vault.id"/> -->
-      <div class="">
+    <div class="card m-4 shadow rounded " style="width: 18rem">
+      <div class="on-hover position-absolute" style="right: 1rem; top: 1rem" v-if="account.id == vault.creatorId">
+        <i class="mdi mdi-delete-forever text-danger f-20 action" title="delete" @click="deleteVault()"></i>
+      </div>
+      <img :src="vault.img" 
+          class="card-img"
+          />        
+      <div class="card-img-overlay text-light">
       <router-link :to="{name: 'Vault', params: {vaultId: vault.id}}" class="action" title="vault page">
-        <h5>{{vault.name}}</h5>
-      </router-link>   
-          <img :src="vault.creator.picture" class="rounded-circle" style="width: 2.5rem;">     
-      </div>      
+        <h5 class="text-black action position-absolute bottom-0 start-0 m-2">{{vault.name}}</h5>
+        </router-link>      
+      </div> 
     </div>
+    
   </div>
 
     <Modal :id="'vault-modal-'+ vault.id" class="bg-dark text-light">
@@ -26,7 +28,10 @@
 
 
 <script>
+import { computed } from '@vue/reactivity'
+import { AppState } from '../AppState'
 import { Vault } from '../Models/Vault'
+import { vaultsService } from '../services/VaultsService'
 export default {
   props: {
     vault: {
@@ -35,7 +40,18 @@ export default {
     }
   },
   setup(props){
-    return {}
+    return {
+      account: computed(() => AppState.account),
+      async deleteVault() {
+        try {
+          if(await Pop.confirm()) {
+            await vaultsService.delete(props.vault.id)
+          }
+        } catch (error) {
+          Pop.toast(error, 'error')
+        }
+      }  
+    }
   }
 }
 </script>

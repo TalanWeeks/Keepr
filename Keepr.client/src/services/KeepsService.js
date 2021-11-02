@@ -33,12 +33,16 @@ class KeepsService{
     logger.log("this is all the keeps on this profile", AppState.usersKeeps)
 
   }
-
   async editKeep(keepData){
     const res = await api.put(`api/keeps/${keepData.id}`, keepData)
     logger.log('your edited keep data mi lord', res.data)
     let keepIndex = AppState.keeps.findIndex(k => k.id == keepData.id)
     AppState.keeps.splice(keepIndex, 1, new Keep(res.data))
+  }
+  async delete(id) {
+    const res = await api.delete(`api/keeps/${id}`)
+    logger.log('delete res', res)
+    AppState.keeps = AppState.keeps.filter(k => k.id !== id)
   }
 }
 export const keepsService = new KeepsService()
