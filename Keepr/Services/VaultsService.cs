@@ -35,9 +35,11 @@ namespace Keepr.Services
       return foundVault;
     }
 
-    public List<Vault> GetVaultsByProfile(string profileId)
-    {
+    public List<Vault> GetVaultsByProfile(string profileId, string userId)
+    { if(userId == profileId){
       return _vaultsRepository.GetVaultsByProfile(profileId);
+      }
+      return _vaultsRepository.GetOtherUsersVaults(profileId);
     }
 
     public Vault Create(Vault VaultsData)
