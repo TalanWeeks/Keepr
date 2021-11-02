@@ -26,7 +26,7 @@
                   :key="v.id"
                   :vault="v"
                   class="dropdown-item action"
-                  @click="logTheOption(v.id)">
+                  @click="createVaultKeep(v.id, keep.id)">
                   {{v.name}}
                 </li>
               </ul>
@@ -48,6 +48,7 @@ import { computed } from '@vue/reactivity'
 import { Keep } from '../Models/Keep'
 import { AppState } from '../AppState'
 import { logger } from '../utils/Logger'
+import { vaultsService } from '../services/VaultsService'
 
 export default {
   props: {
@@ -59,8 +60,8 @@ export default {
   setup(){
     return {
       vaults: computed(() => AppState.usersVaults),
-      async logTheOption(vaultId){
-        logger.log(vaultId)
+      async createVaultKeep(vaultId, keepId){
+        await vaultsService.createVaultKeep(vaultId, keepId)
       }
     }
   }

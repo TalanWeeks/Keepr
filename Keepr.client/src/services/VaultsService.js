@@ -2,6 +2,7 @@
 import { AppState } from "../AppState"
 import { Keep } from "../Models/Keep"
 import { Vault } from "../Models/Vault"
+import { VaultKeep } from "../Models/VaultKeep"
 import { logger } from "../utils/Logger"
 import { api } from "./AxiosService"
 class VaultsService{
@@ -9,6 +10,13 @@ class VaultsService{
   async createVault(newVault){
     const res = await api.post('api/vaults', newVault)
     AppState.usersVaults.unshift(new Vault(res.data))
+    logger.log('your new vault data sir', res.data)
+  }
+
+  async createVaultKeep(vaultId, keepId){
+    const data = {vaultId: vaultId, keepId: keepId}
+    const res = await api.post('api/vaultkeeps', data)
+    AppState.usersVaultKeeps.unshift(new VaultKeep(res.data))
     logger.log('your new vault data sir', res.data)
   }
   async getVaultsByProfileId(profileId){
