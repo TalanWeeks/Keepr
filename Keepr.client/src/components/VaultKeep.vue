@@ -11,7 +11,7 @@
             <img :src="keep.creator.picture" class="rounded-circle" style="width: 2.5rem;" >
           </router-link> 
         </span>
-        <div class="on-hover position-absolute" style="right: 1rem; top: 1rem" v-if="account.id == keep.creatorId"  @click.stop="deleteVaultKeep()">
+        <div class="on-hover position-absolute" style="right: 1rem; top: 1rem" v-if="account.id == vault.creatorId"  @click.stop="deleteVaultKeep()">
           <i class="mdi mdi-delete-forever text-danger f-20 action" title="delete"></i>
         </div>       
     </div>      
@@ -51,6 +51,7 @@ export default {
   setup(props){
     return {
       account: computed(() => AppState.account),
+      vault: computed(() => AppState.vault),
       async deleteVaultKeep() {
         try {
           if(await Pop.confirm()) {

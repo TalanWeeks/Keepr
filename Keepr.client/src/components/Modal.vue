@@ -1,6 +1,6 @@
 <template>
   <div
-    class="modal fade bg-black"
+    class="modal fade custom-bg"
     tabindex="-1"
     aria-labelledby="exampleModalLabel"
     aria-hidden="true"
@@ -36,5 +36,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.custom-bg{
+  background-color: rgb(0, 0, 0)!important;
+}
 
 </style>

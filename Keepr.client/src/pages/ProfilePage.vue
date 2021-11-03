@@ -33,7 +33,7 @@
       class="p-0 m-0"/>
   </div>
   </div>
-  <Modal id="create-vault" class="bg-dark text-light">
+  <Modal id="create-vault" class="bg-dark text-dark">
     <template #modal-title>
       <h5>Create Vault</h5>      
     </template>
@@ -41,9 +41,9 @@
       <VaultForm class="m-1 container-fluid" />
     </template>
   </Modal>
-  <Modal id="create-keep" class="bg-dark text-light">
+  <Modal id="create-keep" class="bg-dark text-dark">
     <template #modal-title>
-      <h5>Create Keept</h5>      
+      <h5>Create Keep</h5>      
     </template>
     <template #modal-body>
       <KeepForm class="m-1 container-fluid" />

@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-black">    
+  <div class="bg-black ">    
     <div class="card m-2 shadow rounded ">
       <img :src="keep.img" 
           class="card-img"

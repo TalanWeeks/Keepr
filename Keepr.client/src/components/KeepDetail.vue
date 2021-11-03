@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row text-dark">
       <div class="col-md-5 m-2">
-        <img :src="keep.img" style="width: 35rem" class="rounded"/>
+        <img :src="keep.img" style="width: 35rem" class="rounded custom-img-size"/>
         </div>
         <div class="col-md-2"></div>
       <div class="col-md-4 m-2">
@@ -88,5 +88,10 @@ export default {
   height: 200px;
   overflow-y: scroll;
   scroll-behavior: smooth;
+}
+@media screen and (max-width: 600px) {
+  .custom-img-size{
+    width: 20rem !important;
+  }
 }
 </style>
