@@ -16,3 +16,7 @@ CREATE TABLE IF NOT EXISTS accounts(
       JOIN keeps k ON k.id = vk.keepId
       JOIN accounts a ON a.id = vk.creatorId
       WHERE vk.vaultId = 622;
+
+
+      UPDATE keeps
+      SET views = 0

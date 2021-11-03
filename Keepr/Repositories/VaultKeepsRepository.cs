@@ -23,6 +23,9 @@ namespace Keepr.Repositories
       (creatorId, vaultId, keepId)
       VALUES(@creatorId, @VaultId, @KeepId);
       SELECT LAST_INSERT_ID();
+      UPDATE keeps
+      SET keeps = keeps + 1
+      WHERE id = @keepId;
       ";
       var id = _db.ExecuteScalar<int>(sql, data);
       data.Id = id;
