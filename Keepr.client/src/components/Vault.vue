@@ -48,6 +48,7 @@ export default {
         try {
           if(await Pop.confirm()) {
             await vaultsService.delete(props.vault.id)
+            Pop.toast("Deleted the vault", 'success')
           }
         } catch (error) {
           Pop.toast(error, 'error')

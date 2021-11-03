@@ -26,13 +26,11 @@
       <h3>Keeps <span class="mdi mdi-plus action" title="create keep" data-bs-toggle="modal"
           data-bs-target="#create-keep" v-if="profile.id === account.id"></span></h3>
     </div>
-    <div class="container-fluid masonry-bullish">
-    <div class="row">
+    <div class="masonryIsh">
       <Keep v-for="k in usersKeeps"
       :key="k.id"
       :keep="k"
       class="p-0 m-0"/>
-    </div>
   </div>
   </div>
   <Modal id="create-vault" class="bg-dark text-light">
@@ -97,12 +95,16 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.masonry-bullish{
-  padding: 2rem;
-  column-count: 4;
-}
-img{
-  width: 100%;
-  margin: 1rem;
+.masonryIsh{
+  columns: 5 200px;
+  column-gap: 1rem;
+  div {
+    width: 150px;
+    background: #EC985A;
+    color: white;
+    margin: 0 1rem 1rem 0;
+    display: inline-block;
+    width: 100%;
+  }
 }
 </style>

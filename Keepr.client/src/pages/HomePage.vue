@@ -1,11 +1,9 @@
 <template>
-  <div class="container-fluid bg-black">
-    <div class="row">
+  <div class=" masonryIsh bg-black">
       <Keep v-for="k in keeps"
       :key="k.id"
       :keep="k"
       class="p-0 m-0"/>
-    </div>
   </div>
 </template>
 
@@ -35,12 +33,16 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.container-fluid{
-  padding: 2rem;
-  column-count: 4;
-}
-img{
-  width: 100%;
-  margin: 1rem;
+.masonryIsh{
+  columns: 4 200px;
+  column-gap: 1rem;
+  div {
+    width: 150px;
+    background: #EC985A;
+    color: white;
+    margin: 0 1rem 1rem 0;
+    display: inline-block;
+    width: 100%;
+  }
 }
 </style>

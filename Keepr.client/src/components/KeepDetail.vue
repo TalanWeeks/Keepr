@@ -72,6 +72,7 @@ export default {
       vaults: computed(() => AppState.usersVaults),
       async createVaultKeep(vaultId, keepId){
         await vaultsService.createVaultKeep(vaultId, keepId)
+        Pop.toast("Added keep to your vault", 'success')
       }
     }
   }
