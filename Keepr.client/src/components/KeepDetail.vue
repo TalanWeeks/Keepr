@@ -7,7 +7,7 @@
         <div class="col-md-2"></div>
       <div class="col-md-4 m-2">
         <div class="row">
-          <div class="col-12 my-2"><h5>{{keep.views}} Keeps: {{keep.keeps}}  Shares: {{keep.shares}}</h5></div>
+          <div class="col-12 my-2"><h5>Views: {{keep.views}} Keeps: {{keep.keeps}}  Shares: {{keep.shares}}</h5></div>
           <div class="col-12 my-2">
             <h2>{{keep.title}}</h2>
           </div>
@@ -26,7 +26,7 @@
                   :key="v.id"
                   :vault="v"
                   class="dropdown-item action"
-                  @click="createVaultKeep(v.id, keep.id)">
+                  @click="createVaultKeep(v.id, keep.id), keep.keeps++">
                   {{v.name}}
                 </li>
               </ul>
