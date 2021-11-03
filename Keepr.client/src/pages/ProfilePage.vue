@@ -26,7 +26,7 @@
       <h3>Keeps <span class="mdi mdi-plus action" title="create keep" data-bs-toggle="modal"
           data-bs-target="#create-keep" v-if="profile.id === account.id"></span></h3>
     </div>
-    <div class="masonryIsh">
+    <div class="masonryIsh m-4">
       <Keep v-for="k in usersKeeps"
       :key="k.id"
       :keep="k"
