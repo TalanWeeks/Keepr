@@ -17,7 +17,7 @@ class KeepsService{
   }
 
   async getKeepById(id){
-    const res = await api.getKeepById(`api/keeps/${id}`)
+    const res = await api.get(`api/keeps/${id}`)
     logger.log("this is a single keep by its Id mi lord", res.data)
   }
   async getKeepByVaultId(vaultId){

@@ -45,6 +45,7 @@ export default {
       }
     } catch (error) {
       Pop.toast(error.message, 'error')
+      router.push({ name: 'Home'})
     }
   })
   return {

@@ -4,7 +4,7 @@
       <img :src="keep.img" 
           class="card-img"
           />
-      <div class="card-img-overlay text-light action" title="details" v-if="keep.creator" @click="openModal()">
+      <div class="card-img-overlay text-light action" title="details" v-if="keep.creator" @click="openModal(keep.views++)">
         <span class="position-absolute bottom-0 end-0 me-2 action"><h5>{{keep.name}}</h5></span>
         <span @click.stop="">
           <router-link :to="{name: 'Profile', params: {id: keep.creatorId}}" class="action position-absolute  bottom-0 start-0 m-2" title="profile page" >
@@ -56,9 +56,10 @@ export default {
           Pop.toast(error, 'error')
         }
       },
-      openModal(){
+      async openModal(){
         const modal = Modal.getOrCreateInstance(document.getElementById('keep-modal-' + props.keep.id))
         modal.show()
+        await keepsService.getKeepById(props.keep.id)
       }
     }
   }
