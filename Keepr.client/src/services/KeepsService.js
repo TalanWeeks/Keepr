@@ -25,6 +25,12 @@ class KeepsService{
     logger.log("this is your keeps in this vault", res.data)
     AppState.vaultKeeps = res.data.map(k => new Keep(k))
   }
+
+  async deleteVaultKeep(id){
+    const res = await api.delete(`api/vaultkeeps/${id}`)
+    logger.log('deleted vaultkeep')
+    AppState.vaultKeeps = AppState.vaultKeeps.filter(v => v.vaultKeepId !== id)
+  }
   async getKeepsByProfileId(profileId){
     AppState.usersKeeps = []
     const res = await api.get(`api/profiles/${profileId}/keeps`)

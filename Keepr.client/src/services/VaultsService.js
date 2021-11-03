@@ -44,5 +44,6 @@ class VaultsService{
     logger.log('delete res', res)
     AppState.usersVaults = AppState.usersVaults.filter(v => v.id !== id)
   }
+
 }
 export const vaultsService = new VaultsService()

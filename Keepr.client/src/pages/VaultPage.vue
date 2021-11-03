@@ -6,12 +6,12 @@
         <h4 class="mt-4">Keeps: {{vaultKeeps.length}}</h4>
       </div>
       <div class="col-md-6 text-end">
-        <button class="btn btn-danger">Delete Vault</button>
+        <button class="btn btn-danger" @click="deleteVault()">Delete Vault</button>
       </div>
     </div>
   </div>
   <div class="masonryIsh bg-black m-5">
-      <Keep v-for="vk in vaultKeeps"
+      <VaultKeep v-for="vk in vaultKeeps"
       :key="vk.id"
       :keep="vk"
       class="p-0 m-0"/>
@@ -25,6 +25,7 @@ import Pop from "../utils/Pop"
 import { AppState } from '../AppState'
 import { useRoute } from 'vue-router'
 import { vaultsService } from '../services/VaultsService'
+import { router } from '../router'
 export default {
   setup() {
     const route = useRoute()
@@ -48,7 +49,18 @@ export default {
   })
   return {
       vaultKeeps: computed(()=> AppState.vaultKeeps),
-      vault: computed(() => AppState.vault)
+      vault: computed(() => AppState.vault),
+      async deleteVault(){
+        try {
+          if(await Pop.confirm()) {
+            await vaultsService.delete(route.params.vaultId)
+            router.push({ name: 'Home'})
+            Pop.toast("Deleted vault", 'success')
+          }
+        } catch (error) {
+          Pop.toast(error, 'error')
+        }       
+      }
     }
   }
 }
