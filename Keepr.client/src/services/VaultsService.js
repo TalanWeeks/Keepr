@@ -25,6 +25,13 @@ class VaultsService{
     logger.log("this is all the Vaults on this profile", res.data)
     AppState.usersVaults = res.data.map(v => new Vault(v))
   }
+
+  async getVaultById(vaultId){
+    AppState.vault = {}
+    const res = await api.get(`api/vaults/${vaultId}`)
+    logger.log("here is the vault tied to this page", res.data)
+    AppState.vault = res.data
+  }
   async editVault(vaultData){
     const res = await api.put(`api/vaults/${vaultData.id}`, vaultData)
     logger.log('your edited vault data mi lord', res.data)

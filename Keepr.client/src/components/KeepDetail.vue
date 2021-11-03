@@ -59,6 +59,8 @@ import { Keep } from '../Models/Keep'
 import { AppState } from '../AppState'
 import { logger } from '../utils/Logger'
 import { vaultsService } from '../services/VaultsService'
+import Pop from '../utils/Pop'
+
 
 export default {
   props: {

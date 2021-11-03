@@ -1,5 +1,5 @@
 <template>
-  <div class=" bg-black col-md-3">    
+  <div class=" bg-black col-md-2 mx-4">    
     <div class="card m-4 shadow rounded " style="width: 18rem">
 
       <img :src="vault.img" 
