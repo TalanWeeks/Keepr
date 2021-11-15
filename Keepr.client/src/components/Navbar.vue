@@ -9,6 +9,9 @@
         />
       </div>
     </router-link>
+      <div class="ms-2 text-light">
+        <h4>Keeper</h4>
+      </div>
     <button
       class="navbar-toggler"
       type="button"
