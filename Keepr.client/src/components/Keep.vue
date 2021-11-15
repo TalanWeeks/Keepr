@@ -4,8 +4,8 @@
       <img :src="keep.img" 
           class="card-img"
           />
-      <div class="card-img-overlay text-light action" title="details" v-if="keep.creator" @click="openModal(keep.views++)">
-        <span class="position-absolute bottom-0 end-0 me-2 action"><h5>{{keep.name}}</h5></span>
+      <div class="card-img-overlay text-dark action" title="details" v-if="keep.creator" @click="openModal(keep.views++)">
+        <span class="position-absolute bottom-0 end-0 me-0 action glass-bg"><h5>{{keep.name}}</h5></span>
         <span @click.stop="">
           <router-link :to="{name: 'Profile', params: {id: keep.creatorId}}" class="action position-absolute  bottom-0 start-0 m-2" title="profile page" >
             <img :src="keep.creator.picture" class="rounded-circle" style="width: 2.5rem;" >
@@ -14,7 +14,7 @@
         <div class="on-hover position-absolute" style="right: 1rem; top: 1rem" v-if="account.id == keep.creatorId" @click.stop="deleteKeep()">
           <i class="mdi mdi-delete-forever text-danger f-20 action" title="delete"></i>
         </div>       
-    </div>      
+      </div>      
     </div>
     <Modal :id="'keep-modal-'+ keep.id" class="bg-dark text-light">
       <template #modal-title>
@@ -68,5 +68,10 @@ export default {
 
 
 <style lang="scss" scoped>
-
+.glass-bg{
+  padding: .2rem;
+  border-radius: 10%;
+  background-color: #ffffff5e;
+  backdrop-filter: blur(20px);
+}
 </style>
