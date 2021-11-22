@@ -2,6 +2,7 @@ using System.Data;
 using Keepr.Models;
 using Dapper;
 
+// new db added runs out in 24 days :(
 namespace Keepr.Repositories
 {
   public class AccountsRepository
