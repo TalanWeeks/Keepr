@@ -15,6 +15,5 @@ namespace Keepr.Models
     public int Shares { get; set; }
     public int Keeps { get; set; }    
     public Profile Creator { get; set; }
-
   }
 }
