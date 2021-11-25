@@ -20,6 +20,7 @@ namespace Keepr.Controllers
       _vaultsService = vaultsService;
       _vaultKeepsService = vaultKeepsService;
     }
+
     [HttpGet]
     public ActionResult<List<Vault>> GetAll()
     {
@@ -32,6 +33,7 @@ namespace Keepr.Controllers
         return BadRequest(e.Message);
       }
     }
+
     [HttpGet("{vaultId}")]
     public async Task<ActionResult<Vault>> GetById(int vaultId)
     {
@@ -63,6 +65,7 @@ namespace Keepr.Controllers
         return BadRequest(e.Message);
       }
     }
+
     [Authorize]
     [HttpPost]
     public async Task<ActionResult<Vault>> Post([FromBody] Vault vaultData)
@@ -82,8 +85,6 @@ namespace Keepr.Controllers
         return BadRequest(e.Message);
       }
     }
-
-
 
     [Authorize]
     [HttpPut("{id}")]

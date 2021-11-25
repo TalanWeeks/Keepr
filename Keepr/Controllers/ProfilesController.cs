@@ -38,7 +38,6 @@ namespace Keepr.Controllers
       }
     }
 
-
     [HttpGet("{profileId}/keeps")]
     public ActionResult<List<Keep>> GetKeepsByProfile(string profileId)
     {
@@ -52,7 +51,6 @@ namespace Keepr.Controllers
         return BadRequest(e.Message);
       }
     }
-
 
     [HttpGet("{profileId}/vaults")]
     public async Task<ActionResult<List<Vault>>> GetVaultsByProfile(string profileId)

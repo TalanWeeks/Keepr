@@ -2,9 +2,7 @@ using System.Collections.Generic;
 namespace Keepr.Interfaces
 
 {
-
   public interface IRepository<T>
-
 {
 
 /// <summary>
