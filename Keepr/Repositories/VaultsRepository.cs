@@ -27,6 +27,7 @@ namespace Keepr.Repositories
       data.Id = id;
       return data;
     }
+
     public void Delete(int id)
     {
       string sql = @"
@@ -56,6 +57,7 @@ namespace Keepr.Repositories
       }
       return data;
     }
+
     public List<Vault> Get()
     {
       string sql = "SELECT * FROM vaults;";
@@ -95,6 +97,7 @@ namespace Keepr.Repositories
         return v;
       }, new { profileId }).ToList();
     }
+    
     public List<Vault> GetOtherUsersVaults(string profileId)
     {
       string sql = @"

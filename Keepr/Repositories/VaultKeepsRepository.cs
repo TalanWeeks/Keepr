@@ -8,7 +8,6 @@ namespace Keepr.Repositories
 {
   public class VaultKeepsRepository
   {
-
     private readonly IDbConnection _db;
 
     public VaultKeepsRepository(IDbConnection db)
