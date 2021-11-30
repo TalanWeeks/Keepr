@@ -32,7 +32,9 @@ export default {
 }
 </script>
 
+
 <style scoped lang="scss">
+// this css creates the masonry layout in the homepage
 .masonryIsh{
   columns: 4 200px;
   column-gap: 1rem;
