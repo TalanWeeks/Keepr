@@ -15,6 +15,7 @@ namespace Keepr.Repositories
       _db = db;
     }
 
+    // this is a post method that allows you to create a vaultKeep
     public VaultKeep CreateVaultKeep(VaultKeep data)
     {
       string sql = @"
@@ -31,6 +32,7 @@ namespace Keepr.Repositories
       return data;
     }
 
+    // this is a delete function that allows a user to delete a specific vaultKeep
     public void Delete(int id)
     {
       string sql = @"
@@ -53,6 +55,7 @@ namespace Keepr.Repositories
       throw new System.NotImplementedException();
     }
 
+    // this is a get method that allows a user to grab all keeps that are tied to a vault
     public List<VaultKeepViewModel> GetVaultKeepsByVaultId(int vaultId, string userId)
     {
       string sql = @"
@@ -72,6 +75,7 @@ namespace Keepr.Repositories
       }, new { vaultId, userId }).ToList();
     }
 
+    // this a get method that allows you to get a vault keep by its specific ID
     public VaultKeep GetById(int id)
     {
       string sql = @"
