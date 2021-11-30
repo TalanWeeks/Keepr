@@ -16,6 +16,7 @@ namespace Keepr.Repositories
       _db = db;
     }
 
+    // this is a post function that creates a keep/photo post
     public Keep Create(Keep data)
     {
       string sql = @"
@@ -28,6 +29,7 @@ namespace Keepr.Repositories
       return data;
     }
 
+    // this is a delete function that allows a user to delete only their keep
     public void Delete(int id)
     {
       string sql = @"
@@ -40,6 +42,7 @@ namespace Keepr.Repositories
       }
     }
 
+    // this is a put function that allows you to edit a keep
     public Keep Edit(Keep data)
     {
       string sql = @"
@@ -58,6 +61,7 @@ namespace Keepr.Repositories
       return data;
     }
     
+    // this is a get function that allows you to get all keeps in the db
     public List<Keep> Get()
     {
       string sql = @"
@@ -73,6 +77,7 @@ namespace Keepr.Repositories
       }).ToList();
     }
 
+    // this is a get function that allows a user to get a specific ID and also increments a view when its been grabbed 
     public Keep Get(int id)
     {
       string sql = @"
@@ -93,6 +98,7 @@ namespace Keepr.Repositories
       }, new { id }).FirstOrDefault();
     }
 
+    // this is a get function that grabs all keeps tied to a specific user
     public List<Keep> GetKeepsByProfile(string profileId)
     {
       string sql = @"
