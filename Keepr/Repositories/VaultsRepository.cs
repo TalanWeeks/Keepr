@@ -16,6 +16,7 @@ namespace Keepr.Repositories
       _db = db;
     }
 
+    // this is post method that allows a user to create a vault
     public Vault Create(Vault data)
     {
       string sql = @"
@@ -28,6 +29,7 @@ namespace Keepr.Repositories
       return data;
     }
 
+    // this is a delete method that allows the user to delete a vault and doing so cascading deletes all keeps inside
     public void Delete(int id)
     {
       string sql = @"
@@ -40,6 +42,7 @@ namespace Keepr.Repositories
       }
     }
 
+    // this is a put method that allows a user to edit a vault
     public Vault Edit(Vault data)
     {
       string sql = @"
@@ -58,12 +61,14 @@ namespace Keepr.Repositories
       return data;
     }
 
+    // this is a get method that allows a user to get all vaults
     public List<Vault> Get()
     {
       string sql = "SELECT * FROM vaults;";
       return _db.Query<Vault>(sql).ToList();
     }
 
+    // this is a get method that allows a user to get a specifc vault
     public Vault Get(int id)
     {
       string sql = @"
@@ -81,6 +86,7 @@ namespace Keepr.Repositories
       }, new { id }).FirstOrDefault();
     }
 
+    // this is a get method that allows a user to get all vaults tied to them specifically
     public List<Vault> GetVaultsByProfile(string profileId)
     {
       string sql = @"
@@ -98,6 +104,8 @@ namespace Keepr.Repositories
       }, new { profileId }).ToList();
     }
     
+
+    // this is a get method that allows a user to get another users vaults by that users IDs
     public List<Vault> GetOtherUsersVaults(string profileId)
     {
       string sql = @"
