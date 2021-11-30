@@ -14,18 +14,21 @@ namespace Keepr.Repositories
       _db = db;
     }
 
+    // this gets a profile form the db by its email address
     internal Account GetByEmail(string userEmail)
     {
       string sql = "SELECT * FROM accounts WHERE email = @userEmail";
       return _db.QueryFirstOrDefault<Account>(sql, new { userEmail });
     }
 
+    // this gets a profile by its unique ID
     internal Account GetById(string id)
     {
       string sql = "SELECT * FROM accounts WHERE id = @id";
       return _db.QueryFirstOrDefault<Account>(sql, new { id });
     }
 
+    // this is the post function that will create a new profile
     internal Account Create(Account newAccount)
     {
       string sql = @"
@@ -37,6 +40,7 @@ namespace Keepr.Repositories
       return newAccount;
     }
 
+    // this is a PUT function that allows you to edit profile information
     internal Account Edit(Account update)
     {
       string sql = @"
